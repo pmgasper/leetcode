@@ -31,8 +31,6 @@ print(majority_element_firstattempt([1,1,2,1]))
 print(majority_element_firstattempt([1,1,1,2]))
 print(majority_element_firstattempt([1,1,2,2,1]))
 print(majority_element_firstattempt([1,2,2,1,1]))
-import random
-print(majority_element_firstattempt([2] + [random.random()] * 100 + [2] * 100))
 
 
 # Time complexity
@@ -48,7 +46,9 @@ def time_complex_test(function_name, testlist_name, num_reps = 1000):
     
 
 arg_name = 'testlist1'
-testlist1 = [2] + [random.random()] * 1000 + [2] * 1000
+testlist1 = [2] + [n for n in range(3, 1000)] + [2] * 1000
+# better off using range than random, keeping random here as a reference
+# testlist1 = [2] + [random.random() for _ in range(1000)] + [2] * 1000
 print(arg_name)
 
 function_name = 'majority_element_secondattempt'
@@ -94,6 +94,8 @@ print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
 reps = 10000
 time = time_complex_test(function_name, arg_name, reps)
 print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
+
+print()
 
 function_name = 'majority_element_firstattempt'
 reps = 1000
