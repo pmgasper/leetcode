@@ -36,72 +36,48 @@ print(majority_element_firstattempt([1,2,2,1,1]))
 # Time complexity
 print()
 from timeit import Timer
-import random
 
-def time_complex_test(function_name, testlist_name, num_reps = 1000):
+def time_complex_test(function_name, testlist_name, num_reps = 100):
     t1 = Timer('{0}({1})'.format(function_name, testlist_name),
                'from __main__ import {0}, {1}'.format(function_name,
                                                       testlist_name))
     return t1.timeit(number = num_reps)
-    
 
-arg_name = 'testlist1'
-testlist1 = [2] + [n for n in range(3, 1000)] + [2] * 1000
-# better off using range than random, keeping random here as a reference
-# testlist1 = [2] + [random.random() for _ in range(1000)] + [2] * 1000
-print(arg_name)
+test_worstcase = [1] * 100 + [2] * 100 + [1]
+test_worstcase_10x = [1] * 1000 + [2] * 1000 + [1]
+test_worstcase_100x = [1] * 10000 + [2] * 10000 + [1]
 
 function_name = 'majority_element_secondattempt'
+print(function_name)
 
-reps = 100
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
+arg_name = 'test_worstcase'
+time = time_complex_test(function_name, arg_name)
+print('  time for {0:20}: {1:6.5f}'.format(arg_name, time))
 
-reps = 1000
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
+arg_name = 'test_worstcase_10x'
+time = time_complex_test(function_name, arg_name)
+print('  time for {0:20}: {1:6.5f}'.format(arg_name, time))
 
-reps = 10000
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
-
-print()
-
-function_name = 'majority_element_firstattempt'
-reps = 100
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
-
-function_name = 'majority_element_firstattempt'
-reps = 1000
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
-
-reps = 10000
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
-
-print()
-arg_name = 'testlist2'
-testlist2 = [1] * 101 + [2] * 100 + [1]
-print(arg_name)
-
-function_name = 'majority_element_secondattempt'
-reps = 1000
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
-
-reps = 10000
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
+arg_name = 'test_worstcase_100x'
+time = time_complex_test(function_name, arg_name)
+print('  time for {0:20}: {1:6.5f}'.format(arg_name, time))
 
 print()
 
 function_name = 'majority_element_firstattempt'
-reps = 1000
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
+print(function_name)
 
-reps = 10000
-time = time_complex_test(function_name, arg_name, reps)
-print('  Time for {0:40} {1:>6}x = {2:6.4f}'.format(function_name, reps, time))
+arg_name = 'test_worstcase'
+time = time_complex_test(function_name, arg_name)
+print('  time for {0:20}: {1:6.5f}'.format(arg_name, time))
+
+arg_name = 'test_worstcase_10x'
+time = time_complex_test(function_name, arg_name)
+print('  time for {0:20}: {1:6.5f}'.format(arg_name, time))
+
+arg_name = 'test_worstcase_100x'
+time = time_complex_test(function_name, arg_name)
+print('  time for {0:20}: {1:6.5f}'.format(arg_name, time))
+
+print()
+

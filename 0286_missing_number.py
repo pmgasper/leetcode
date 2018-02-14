@@ -42,26 +42,40 @@ print()
 
 
 testlist = [x for x in range(1000) if x != 582]
+testlist_10x = [x for x in range(10000) if x != 5820]
+testlist_100x = [x for x in range(100000) if x != 58200]
 
 
 t1 = Timer('missing_number_firstattempt(testlist)',
            'from __main__ import missing_number_firstattempt, testlist')
-print('Time for first attempt       {0:4f}'.format(t1.timeit(number=1000)))
-print('Time for first attempt 10x   {0:4f}'.format(t1.timeit(number=10000)))
-print('Time for first attempt 100x  {0:4f}'.format(t1.timeit(number=100000)))
+print('Time for first attempt       {0:5f}'.format(t1.timeit(number=100)))
+t1 = Timer('missing_number_firstattempt(testlist_10x)',
+           'from __main__ import missing_number_firstattempt, testlist_10x')
+print('Time for first attempt 10x   {0:5f}'.format(t1.timeit(number=100)))
+t1 = Timer('missing_number_firstattempt(testlist_100x)',
+           'from __main__ import missing_number_firstattempt, testlist_100x')
+print('Time for first attempt 100x  {0:5f}'.format(t1.timeit(number=100)))
 
 print()
 
 t2 = Timer('missing_number_secondattempt(testlist)',
            'from __main__ import missing_number_secondattempt, testlist')
-print('Time for second attempt      {0:4f}'.format(t2.timeit(number=1000)))
-print('Time for second attempt 10x  {0:4f}'.format(t2.timeit(number=10000)))
-print('Time for second attempt 10x  bad')
+print('Time for second attempt      {0:5f}'.format(t2.timeit(number=100)))
+t2 = Timer('missing_number_secondattempt(testlist_10x)',
+           'from __main__ import missing_number_secondattempt, testlist_10x')
+print('Time for second attempt 10x  {0:5f}'.format(t2.timeit(number=100)))
+t2 = Timer('missing_number_secondattempt(testlist_100x)',
+           'from __main__ import missing_number_secondattempt, testlist_100x')
+print('Time for second attempt 100x {0:5f}'.format(t2.timeit(number=100)))
 
 print()
 t3 = Timer('missing_number(testlist)',
            'from __main__ import missing_number, testlist')
-print('Time for third attempt       {0:4f}'.format(t3.timeit(number=1000)))
-print('Time for third attempt 10x   {0:4f}'.format(t3.timeit(number=10000)))
-print('Time for third attempt 100x  {0:4f}'.format(t3.timeit(number=100000)))
+print('Time for third attempt       {0:5f}'.format(t3.timeit(number=100)))
+t3 = Timer('missing_number(testlist_10x)',
+           'from __main__ import missing_number, testlist_10x')
+print('Time for third attempt 10x   {0:5f}'.format(t3.timeit(number=100)))
+t3 = Timer('missing_number(testlist_100x)',
+           'from __main__ import missing_number, testlist_100x')
+print('Time for third attempt 100x  {0:5f}'.format(t3.timeit(number=100)))
 

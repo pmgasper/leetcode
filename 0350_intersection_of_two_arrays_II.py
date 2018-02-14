@@ -81,57 +81,98 @@ from timeit import Timer
 
 print()
 print('Ordered test lists')
-nums1 = list(range(1, 1000, 2))
-nums2 = list(range(1, 1000, 3))
+nums1 = list(range(1, 100, 2))
+nums2 = list(range(1, 100, 3))
+nums1_10x = list(range(1, 1000, 2))
+nums2_10x = list(range(1, 1000, 3))
+nums1_100x = list(range(1, 10000, 2))
+nums2_100x = list(range(1, 10000, 3))
 
 t1 = Timer('array_intersection(nums1, nums2)',
            'from __main__ import array_intersection, nums1, nums2')
-print(' Time 3rd attempt 10x   {0:4f}'.format(t1.timeit(number = 10)))
-print(' Time 3rd attempt 100x  {0:4f}'.format(t1.timeit(number = 100)))
-print(' Time 3rd attempt 1000x {0:4f}'.format(t1.timeit(number = 1000)))
+print(' Time 3rd attempt      {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection(nums1_10x, nums2_10x)',
+           'from __main__ import array_intersection, nums1_10x, nums2_10x')
+print(' Time 3rd attempt  10x {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection(nums1_100x, nums2_100x)',
+           'from __main__ import array_intersection, nums1_100x, nums2_100x')
+print(' Time 3rd attempt 100x {0:4f}'.format(t1.timeit(number = 100)))
 
 print()
-t2 = Timer('array_intersection_secondattempt(nums1, nums2)',
+t1 = Timer('array_intersection_secondattempt(nums1, nums2)',
            ('from __main__ import array_intersection_secondattempt,'
             'nums1, nums2'))
-print(' Time 2nd attempt 10x   {0:4f}'.format(t2.timeit(number = 10)))
-print(' Time 2nd attempt 100x  {0:4f}'.format(t2.timeit(number = 100)))
-print(' Time 2nd attempt 1000x {0:4f}'.format(t2.timeit(number = 1000)))
+print(' Time 2nd attempt      {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection_secondattempt(nums1_10x, nums2_10x)',
+           ('from __main__ import array_intersection_secondattempt,'
+            'nums1_10x, nums2_10x'))
+print(' Time 2nd attempt  10x {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection_secondattempt(nums1_100x, nums2_100x)',
+           ('from __main__ import array_intersection_secondattempt,'
+            'nums1_100x, nums2_100x'))
+print(' Time 2nd attempt 100x {0:4f}'.format(t1.timeit(number = 100)))
 
 print()
-t2 = Timer('array_intersection_firstattempt(nums1, nums2)',
-           ('from __main__ import array_intersection_fisrtattempt,'
+t1 = Timer('array_intersection_firstattempt(nums1, nums2)',
+           ('from __main__ import array_intersection_firstattempt,'
             'nums1, nums2'))
-print(' Time 1st attempt 10x   {0:4f}'.format(t1.timeit(number = 10)))
-print(' Time 1st attempt 100x  {0:4f}'.format(t1.timeit(number = 100)))
-print(' Time 1st attempt 1000x {0:4f}'.format(t1.timeit(number = 1000)))
+print(' Time 1st attempt      {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection_firstattempt(nums1_10x, nums2_10x)',
+           ('from __main__ import array_intersection_firstattempt,'
+            'nums1_10x, nums2_10x'))
+print(' Time 1st attempt  10x {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection_firstattempt(nums1_100x, nums2_100x)',
+           ('from __main__ import array_intersection_firstattempt,'
+            'nums1_100x, nums2_100x'))
+print(' Time 1st attempt 100x {0:4f}'.format(t1.timeit(number = 100)))
 
 
 print()
 print('Random test lists')
 import random
-nums1 = [random.randint(0, 1000) for _ in range(1000 // 2)]
-nums2 = [random.randint(0, 1000) for _ in range(1000 // 3)]
+nums1 = [random.randint(0, 1000) for _ in range(100 // 2)]
+nums2 = [random.randint(0, 1000) for _ in range(100 // 3)]
+nums1_10x = [random.randint(0, 1000) for _ in range(1000 // 2)]
+nums2_10x = [random.randint(0, 1000) for _ in range(1000 // 3)]
+nums1_100x = [random.randint(0, 1000) for _ in range(10000 // 2)]
+nums2_100x = [random.randint(0, 1000) for _ in range(10000 // 3)]
 
 t1 = Timer('array_intersection(nums1, nums2)',
            'from __main__ import array_intersection, nums1, nums2')
-print(' Time 3rd attempt 10x   {0:4f}'.format(t1.timeit(number = 10)))
-print(' Time 3rd attempt 100x  {0:4f}'.format(t1.timeit(number = 100)))
-print(' Time 3rd attempt 1000x {0:4f}'.format(t1.timeit(number = 1000)))
+print(' Time 3rd attempt      {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection(nums1_10x, nums2_10x)',
+           'from __main__ import array_intersection, nums1_10x, nums2_10x')
+print(' Time 3rd attempt  10x {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection(nums1_100x, nums2_100x)',
+           'from __main__ import array_intersection, nums1_100x, nums2_100x')
+print(' Time 3rd attempt 100x {0:4f}'.format(t1.timeit(number = 100)))
 
 print()
-t2 = Timer('array_intersection_secondattempt(nums1, nums2)',
+t1 = Timer('array_intersection_secondattempt(nums1, nums2)',
            ('from __main__ import array_intersection_secondattempt,'
             'nums1, nums2'))
-print(' Time 2nd attempt 10x   {0:4f}'.format(t2.timeit(number = 10)))
-print(' Time 2nd attempt 100x  {0:4f}'.format(t2.timeit(number = 100)))
-print(' Time 2nd attempt 1000x {0:4f}'.format(t2.timeit(number = 1000)))
+print(' Time 2nd attempt      {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection_secondattempt(nums1_10x, nums2_10x)',
+           ('from __main__ import array_intersection_secondattempt,'
+            'nums1_10x, nums2_10x'))
+print(' Time 2nd attempt  10x {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection_secondattempt(nums1_100x, nums2_100x)',
+           ('from __main__ import array_intersection_secondattempt,'
+            'nums1_100x, nums2_100x'))
+print(' Time 2nd attempt 100x {0:4f}'.format(t1.timeit(number = 100)))
 
 print()
-t2 = Timer('array_intersection_firstattempt(nums1, nums2)',
-           ('from __main__ import array_intersection_fisrtattempt,'
+
+t1 = Timer('array_intersection_firstattempt(nums1, nums2)',
+           ('from __main__ import array_intersection_firstattempt,'
             'nums1, nums2'))
-print(' Time 1st attempt 10x   {0:4f}'.format(t1.timeit(number = 10)))
-print(' Time 1st attempt 100x  {0:4f}'.format(t1.timeit(number = 100)))
-print(' Time 1st attempt 1000x {0:4f}'.format(t1.timeit(number = 1000)))
+print(' Time 1st attempt      {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection_firstattempt(nums1_10x, nums2_10x)',
+           ('from __main__ import array_intersection_firstattempt,'
+            'nums1_10x, nums2_10x'))
+print(' Time 1st attempt  10x {0:4f}'.format(t1.timeit(number = 100)))
+t1 = Timer('array_intersection_firstattempt(nums1_100x, nums2_100x)',
+           ('from __main__ import array_intersection_firstattempt,'
+            'nums1_100x, nums2_100x'))
+print(' Time 1st attempt 100x {0:4f}'.format(t1.timeit(number = 100)))
 

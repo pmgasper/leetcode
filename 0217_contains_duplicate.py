@@ -30,34 +30,51 @@ print(contains_duplicate([1, 2, 2]))
 from timeit import Timer
 
 print()
-testlist1 = [1, 1]
-testlist1.extend(range(3, 1000))
-t1 = Timer('contains_duplicate_firstattempt(testlist1)',
-           'from __main__ import contains_duplicate_firstattempt, testlist1')
-print('Early duplicate:')
-print(' Time first attempt       {0:.4f}'.format(t1.timeit(100)))
-print(' Time first attempt  10x  {0:.4f}'.format(t1.timeit(1000)))
-print(' Time first attempt 100x  {0:.4f}'.format(t1.timeit(10000)))
-print()
-t2 = Timer('contains_duplicate(testlist1)',
-           'from __main__ import contains_duplicate, testlist1')
-print(' Time second attempt      {0:.4f}'.format(t1.timeit(100)))
-print(' Time second attempt  10x {0:.4f}'.format(t1.timeit(1000)))
-print(' Time second attempt 100x {0:.4f}'.format(t1.timeit(10000)))
+bestcase = [1, 1]
+bestcase.extend(range(3, 1000))
+bestcase_10x = [1, 1]
+bestcase_10x.extend(range(3, 10000))
+
+print('Best case (early duplicate):')
+t1 = Timer('contains_duplicate_firstattempt(bestcase)',
+           'from __main__ import contains_duplicate_firstattempt, bestcase')
+print(' Time first attempt       {0:.5f}'.format(t1.timeit(100)))
+t1 = Timer('contains_duplicate_firstattempt(bestcase_10x)',
+           'from __main__ import contains_duplicate_firstattempt, bestcase_10x')
+print(' Time first attempt 10x   {0:.5f}'.format(t1.timeit(100)))
+
+t2 = Timer('contains_duplicate(bestcase)',
+           'from __main__ import contains_duplicate, bestcase')
+print(' Time second attempt      {0:.5f}'.format(t1.timeit(100)))
+
+t2 = Timer('contains_duplicate(bestcase_10x)',
+           'from __main__ import contains_duplicate, bestcase_10x')
+print(' Time second attempt 10x  {0:.5f}'.format(t1.timeit(100)))
+
 
 print()
-testlist2 = range(1, 1000)
-t1 = Timer('contains_duplicate_firstattempt(testlist2)',
-           'from __main__ import contains_duplicate_firstattempt, testlist2')
-print('No duplicate:')
-print(' Time first attempt       {0:.4f}'.format(t1.timeit(100)))
-print(' Time first attempt  10x  {0:.4f}'.format(t1.timeit(1000)))
-print(' Time first attempt 100x  {0:.4f}'.format(t1.timeit(10000)))
-print()
-t2 = Timer('contains_duplicate(testlist2)',
-           'from __main__ import contains_duplicate, testlist2')
-print(' Time second attempt      {0:.4f}'.format(t1.timeit(100)))
-print(' Time second attempt  10x {0:.4f}'.format(t1.timeit(1000)))
-print(' Time second attempt 100x {0:.4f}'.format(t1.timeit(10000)))
+worstcase = range(1, 1000)
+worstcase_10x = range(1, 10000)
+worstcase_100x = range(1, 100000)
+t1 = Timer('contains_duplicate_firstattempt(worstcase)',
+           'from __main__ import contains_duplicate_firstattempt, worstcase')
+print('Worst case (no duplicate):')
+print(' Time first attempt       {0:.5f}'.format(t1.timeit(100)))
+t1 = Timer('contains_duplicate_firstattempt(worstcase_10x)',
+        'from __main__ import contains_duplicate_firstattempt, worstcase_10x')
+print(' Time first attempt  10x  {0:.5f}'.format(t1.timeit(100)))
+t1 = Timer('contains_duplicate_firstattempt(worstcase_100x)',
+        'from __main__ import contains_duplicate_firstattempt, worstcase_100x')
+print(' Time first attempt 100x  {0:.5f}'.format(t1.timeit(100)))
+
+t2 = Timer('contains_duplicate(worstcase)',
+           'from __main__ import contains_duplicate, worstcase')
+print(' Time second attempt      {0:.5f}'.format(t1.timeit(100)))
+t2 = Timer('contains_duplicate(worstcase_10x)',
+           'from __main__ import contains_duplicate, worstcase_10x')
+print(' Time second attempt  10x {0:.5f}'.format(t1.timeit(100)))
+t2 = Timer('contains_duplicate(worstcase_100x)',
+           'from __main__ import contains_duplicate, worstcase_100x')
+print(' Time second attempt 100x {0:.5f}'.format(t1.timeit(100)))
 
 

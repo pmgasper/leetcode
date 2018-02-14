@@ -18,28 +18,37 @@ def singlenumber_firstattempt(nums):
 
 
 # Tests
-testlist = [i for i in range(1000)] * 2 + [1000] 
-print(singlenumber(testlist))
+worstcase = [i for i in range(1000)] * 2 + [1000] 
+worstcase_10x = [i for i in range(10000)] * 2 + [10000] 
+worstcase_100x = [i for i in range(100000)] * 2 + [100000] 
+print(singlenumber(worstcase))
 print()
 
 # Time complexity
 from timeit import Timer
 
-t1 = Timer('singlenumber(testlist)', 
-           'from __main__ import singlenumber, testlist')
-print('time for singlenumber: {0:.4f}'.format(t1.timeit(number = 1000)))
+print('singlenumber second attempt')
+t1 = Timer('singlenumber(worstcase)', 
+           'from __main__ import singlenumber, worstcase')
+print('  worstcase     : {0:.5f}'.format(t1.timeit(number = 100)))
+t1 = Timer('singlenumber(worstcase_10x)',
+           'from __main__ import singlenumber, worstcase_10x')
+print('  worstcase  10x: {0:.5f}'.format(t1.timeit(number = 100)))
+t1 = Timer('singlenumber(worstcase_100x)',
+           'from __main__ import singlenumber, worstcase_100x')
+print('  worstcase 100x: {0:.5f}'.format(t1.timeit(number = 100)))
 
-t1 = Timer('singlenumber(testlist)', 
-           'from __main__ import singlenumber, testlist')
-print('10x time for singlenumber: {0:.4f}'.format(t1.timeit(number = 10000)))
 
-t1 = Timer('singlenumber_firstattempt(testlist)', 
-           'from __main__ import singlenumber_firstattempt, testlist')
-print('time for singlenumber_firstattempt: {0:.4f}'.format(t1.timeit(number = 
-                                                                     1000)))
+print()
 
-t1 = Timer('singlenumber_firstattempt(testlist)', 
-           'from __main__ import singlenumber_firstattempt, testlist')
-print('time for singlenumber_firstattempt: {0:.4f}'.format(t1.timeit(number =
-                                                                     10000)))
-
+print('singlenumber first attempt')
+t1 = Timer('singlenumber_firstattempt(worstcase)', 
+           'from __main__ import singlenumber_firstattempt, worstcase')
+print('  worstcase     : {0:.5f}'.format(t1.timeit(number = 100)))
+t1 = Timer('singlenumber_firstattempt(worstcase_10x)',
+           'from __main__ import singlenumber_firstattempt, worstcase_10x')
+print('  worstcase  10x: {0:.5f}'.format(t1.timeit(number = 100)))
+t1 = Timer('singlenumber_firstattempt(worstcase_100x)',
+           'from __main__ import singlenumber_firstattempt, worstcase_100x')
+print('  worstcase 100x: {0:.5f}'.format(t1.timeit(number = 100)))
+print()
