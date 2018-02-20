@@ -9,6 +9,7 @@
 
 
 def two_sum(nums, target):
+    # using hash table - O(n)
     complements = {}    # key = number need to reach target
                         # value = index of complement
 
@@ -20,6 +21,7 @@ def two_sum(nums, target):
 
 
 def two_sum_1(nums, target):
+    # Brute force - works, but poor time complexity O(n^2) 
     for i in range(len(nums) - 1):
         for j in range(i + 1, len(nums)): 
             if nums[i] + nums[j] == target:
